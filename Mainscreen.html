@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset = "utf-8">
+  <meta name = "viewport" content = "width=device-width">
+  <title> Lithuanian Poker | Home </title>
+  <link rel ="stylesheet" href ="./styleMain.css">
+</head>
+
+<body>
+<div class = container>
+    <h1>
+      {this.state.message}
+    </h1>
+    <button class = "btn" className="buttons" onClick={this.joinLobby}>
+      Join lobby
+    </button>
+    <br />
+    <button class = "btn" className="buttons" onClick={this.createLobby}>
+      Create lobby
+    </button>
+    <br />
+    <button
+    class = "btnlgout"
+      className="buttons"
+      onClick={this.logOut}
+    >
+      Log out
+    </button>
+    <br />
+  </div>
+</body>

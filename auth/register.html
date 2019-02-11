@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <meta charset = "utf-8">
+    <meta name = "viewport" content = "width=device-width">
+    <title> Lithuanian Poker | Register </title>
+    <link rel ="stylesheet" href ="../css/styleLogReg.css"
+  </head>
+
+  <body>
+    <div class="container">
+      <h1> Register </h1>
+    <form>
+        <label for="user"><b>Username</b></label> <br />
+        <input
+          id="user"
+          type="text"
+          placeholder="Enter Username"
+          name="user"
+          minlength="6"
+          maxlength="20"
+          required
+        />
+        <p id="user-err" style="margin: 0" hidden></p>
+        <br id="user-br" />
+        <label for="pass"><b>Password</b></label> <br />
+        <input
+          id="pass"
+          type="password"
+          placeholder="Enter Password"
+          name="pass"
+          minlength="8"
+          maxlength="256"
+          required
+        />
+        <br />
+        <label for="conf"><b>Confirm password</b></label> <br />
+        <input
+          id="conf"
+          type="password"
+          placeholder="Confirm Password"
+          name="conf"
+          minlength="8"
+          maxlength="256"
+          required
+        />
+        <p id="pass-err" style="margin: 0" hidden></p>
+        <br id="pass-br" />
+        <button type="submit">Register</button>
+    </form>
+      <h3>Already have an account? <a href="login.html">Login</a></h3>
+    </div>
+    <div id="popup" style="display: none">
+      <p style="color:green">
+        Succesfully registered as a new user! Press "Login" to enter the system
+      </p>
+      <button onClick="window.location='/public/auth/login'">Login</button>
+    </div>
+    <script>
+      function showError(place, message) {
+        $(`#${place}-err`)
+          .html(message)
+          .css("color", "red")
+          .show();
+        $(`#${place}-br`).hide();
+      }
+
+      $(document).ready(function() {
+        let userInterval = setInterval(() => {}, 20000000);
+        let passInterval = setInterval(() => {}, 20000000);
+        let canSubUser = false;
+        let canSubPass = false;
+
+        $("form").submit(e => {
+          e.preventDefault();
+          if (canSubPass) {
+            if (canSubUser) {
+              $.ajax({
+                url: "/proc/check_user_availability",
+                type: "POST",
+                data: "user=" + $("#user").val(),
+                async: true,
+                success: function(res) {
+                  if (res != "1") {
+                    showError("user", "Username is invalid");
+                  } else {
+                    $.ajax({
+                      url: "/proc/register",
+                      type: "POST",
+                      async: true,
+                      data: {
+                        user: $("#user").val(),
+                        pass: $("#pass").val(),
+                        conf: $("#conf").val()
+                      },
+                      dataType: "json",
+                      success: function(res) {
+                        if (res.status == 1) $("#popup").show();
+                        else showError("pass", "unspecified error");
+                      },
+                      error: function(err) {
+                        console.log(err.responseJSON.error);
+                        showError("pass", "internal error");
+                      }
+                    });
+                  }
+                },
+                error: function(jqXHR) {
+                  console.log(jqXHR.responseJSON.error);
+                  showError("user", "Unexpected behaviour, try again later");
+                }
+              });
+            } else {
+              showError("user", "Username is invalid");
+            }
+          } else {
+            showError("pass", "Password is invalid");
+          }
+        });
+
+        //Sets userInterval if value is valid
+        $("#user").on("keyup", () => {
+          canSubUser = false;
+          $("#user-br").show();
+          $("#user-err").hide();
+          clearInterval(userInterval);
+          if ($("#user").val().length > 5) {
+            userInterval = setInterval(checkUser, 1000);
+          }
+        });
+
+        //Sets passInterval if value is valid
+        $("#conf").on("keyup", () => {
+          canSubPass = false;
+          $("#pass-br").show();
+          $("#pass-err").hide();
+          clearInterval(passInterval);
+          if ($("#pass").val().length > 7 && $("#conf").val().length > 7) {
+            passInterval = setInterval(checkPass, 250);
+          }
+        });
+
+        //Sends ajax request to the server, to check, whether username is valid
+        function checkUser() {
+          $.ajax({
+            url: "/proc/check_user_availability",
+            type: "POST",
+            data: "user=" + $("#user").val(),
+            async: true,
+            success: function(res) {
+              if (res == "1") {
+                $("#user-err")
+                  .html("Username is valid")
+                  .css("color", "green")
+                  .show();
+                $("#user-br").hide();
+                canSubUser = true;
+              } else {
+                showError("user", "Username is already taken");
+              }
+            },
+            error: function(jqXHR) {
+              console.log(jqXHR.responseJSON.error);
+              showError("user", "Unexpected behaviour, try again later");
+            }
+          });
+          clearInterval(userInterval);
+        }
+
+        //Checks whether password and conf-pass field match
+        function checkPass() {
+          if ($("#pass").val() !== $("#conf").val()) {
+            showError("pass", "Passwords do not match");
+          } else {
+            canSubPass = true;
+          }
+          clearInterval(passInterval);
+        }
+      });
+    </script>
+  </body>
+</html>

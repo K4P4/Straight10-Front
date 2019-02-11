@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset = "utf-8">
+  <meta name = "viewport" content = "width=device-width">
+  <title> Lithuanian Poker | Home </title>
+  <link rel ="stylesheet" href ="./styleMain.css">
+</head>
+
+<body>
+<div class = container>
+    <h1>{this.props.lobbyName}</h1>
+    <h1>Lobby ID: {this.props.lobbyID}</h1>
+    <Table players={this.state.players} >
+    <br />
+    <button onClick={this.leaveLobby}>Leave lobby</button>
+    {this.showStartGameButton()}
+  </div>
+</body>

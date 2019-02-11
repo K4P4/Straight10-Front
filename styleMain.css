@@ -1,0 +1,71 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: url(back.jpg);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center; 
+}
+.container {
+    width:320px;
+    height:420px;
+    position: absolute;
+    background: #2c323f;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border: 1px solid #962f3f;
+    border-radius: 7px;
+}
+h1{
+    margin: 0;
+    padding: 35px 0px 20px;
+    text-align: center;
+    font-size: 25px;
+    color: whitesmoke;
+}
+
+.container button{
+    width: 80%;
+    height: 32px;
+    margin-left: 10%;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    transition: .3s;
+    border-radius: 2px;
+    font-size: 16px;
+    color: whitesmoke;
+    background: #962f3f;
+    border: 1px solid #b56d78;
+    cursor: pointer;
+}
+
+.container .btnlgout {
+    margin-top: 170px;
+    transition: .8s;
+}
+
+.container .btnlgout:hover {
+    background: #58151f;
+    border: 1px solid #6d1e2a;
+}
+
+.container .btnlgout:after {
+    content: '🔑';
+    position: absolute;
+    opacity: 0;
+    right: 105px;
+    margin-top: -2px;
+    transition: .6s;
+}
+
+.container .btnlgout:hover:after {
+    opacity: 1;
+}
+
+.container .btn:hover {
+    border: 2px solid #c7a6a6;
+}
+
+.container .btnbck
