@@ -26,6 +26,14 @@ h1{
     color: whitesmoke;
 }
 
+h2{
+    margin: 0;
+    padding: 0px 0px 20px;
+    text-align: center;
+    font-size: 22px;
+    color: whitesmoke;
+}
+
 .container button{
     width: 80%;
     height: 32px;
@@ -68,4 +76,17 @@ h1{
     border: 2px solid #c7a6a6;
 }
 
-.container .btnbck
+.container table {
+    width: 80%;
+    margin-left: 10%;
+    text-align: center;
+    border-spacing: 0px;
+}
+
+.container td {
+    color: whitesmoke;
+}
+
+.container tbody {
+    background: linear-gradient(90deg, #2c323f 0%, rgba(222,222,222,0.12) 5%, rgba(222,222,222,0.12) 95%, #2c323f 100%);
+}

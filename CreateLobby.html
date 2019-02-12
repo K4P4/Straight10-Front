@@ -10,10 +10,34 @@
 <body>
 <div class = container>
     <h1>{this.props.lobbyName}</h1>
-    <h1>Lobby ID: {this.props.lobbyID}</h1>
-    <Table players={this.state.players} >
-    <br />
-    <button onClick={this.leaveLobby}>Leave lobby</button>
+    <h2>Lobby ID: {this.props.lobbyID}</h2>
+    <!--<Table players={this.state.players} >-->
+
+
+    <table>
+      <thead>
+      <tr>
+          <th>ID</th>
+          <th>Username</th>
+          <th>Status</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>5</td>
+        <td>Jill</td>
+        <td>50</td>
+      </tr>
+      <tr>
+        <td>6</td>
+        <td>Eve</td>
+        <td>94</td>
+      </tr>
+    </tbody>
+    </table>
+
+
+    <button class = "btn" onClick={this.leaveLobby}>Leave lobby</button>
     {this.showStartGameButton()}
   </div>
 </body>
