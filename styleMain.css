@@ -50,8 +50,11 @@ h2{
 }
 
 .container .btnlgout {
-    margin-top: 170px;
     transition: .8s;
+    position: absolute;
+    top: 90%;
+    left: 40%;
+    transform: translate(-50%, -50%);
 }
 
 .container .btnlgout:hover {
@@ -63,7 +66,7 @@ h2{
     content: '🔑';
     position: absolute;
     opacity: 0;
-    right: 105px;
+    right: 75px;
     margin-top: -2px;
     transition: .6s;
 }
@@ -72,8 +75,15 @@ h2{
     opacity: 1;
 }
 
-.container .btn:hover {
+.container .btn:hover, .btnlv:hover {
     border: 2px solid #c7a6a6;
+}
+
+.container .btnlv {
+    position: absolute;
+    top: 90%;
+    left: 40%;
+    transform: translate(-50%, -50%);
 }
 
 .container table {
@@ -85,6 +95,7 @@ h2{
 
 .container td {
     color: whitesmoke;
+    border-bottom: 1px solid rgba(44, 50, 63, 1);
 }
 
 .container tbody {
