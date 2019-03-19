@@ -1,4 +1,4 @@
-body {
+﻿body {
     margin: 0;
     padding: 0;
     background: url(back.jpg);
@@ -52,7 +52,7 @@ h2{
 .container .btnlgout {
     transition: .8s;
     position: absolute;
-    top: 90%;
+    top: 87%;
     left: 40%;
     transform: translate(-50%, -50%);
 }
@@ -81,7 +81,7 @@ h2{
 
 .container .btnlv {
     position: absolute;
-    top: 90%;
+    top: 87%;
     left: 40%;
     transform: translate(-50%, -50%);
 }
@@ -96,8 +96,20 @@ h2{
 .container td {
     color: whitesmoke;
     border-bottom: 1px solid rgba(44, 50, 63, 1);
+    height: 22px;
 }
 
 .container tbody {
     background: linear-gradient(90deg, #2c323f 0%, rgba(222,222,222,0.12) 5%, rgba(222,222,222,0.12) 95%, #2c323f 100%);
+}
+
+.container input {
+    width: 80%;
+    height: 25px;
+    margin-left: 10%;
+    margin-bottom: 12px;
+    position: block;
+    background: #dadce1;
+    border: none;
+    border-radius: 1px;
 }

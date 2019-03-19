@@ -9,23 +9,18 @@
 
 <body>
 <div class = container>
-    <h1>
-      {this.state.message}
-    </h1>
-    <button className="buttons" onClick={this.joinLobby}>
-      Join lobby
-    </button>
+  <div>
+    <h1>Join lobby</h1>
+    {this.showMessage()}
+    <input
+      type="number"
+      value={this.state.lobbyID}
+      name="lobbyID"
+      onChange={this.handleChange}
+    />
+    <button class = "btn" onClick={this.joinLobby}>JOIN</button>
     <br />
-    <button className="buttons" onClick={this.createLobby}>
-      Create lobby
-    </button>
-    <br />
-    <button
-      className="buttons"
-      onClick={this.logOut}
-    >
-      Log out
-    </button>
-    <br />
+    <button class = "btnlv" onClick={this.back}>Back</button>
+  </div>
   </div>
 </body>

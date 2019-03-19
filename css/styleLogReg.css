@@ -16,7 +16,21 @@ body {
     transform: translate(-50%, -50%);
     border: 1px solid #962f3f;
     border-radius: 7px;
+    -webkit-animation: fadein 1.1s;
 }
+
+@keyframes fadein {
+    from {
+        opacity: .25;
+        top: 50%;
+        left: 48%;
+      }
+    
+      to {
+        opacity: 1;
+      }
+}
+
 h1{
     margin: 0;
     padding: 35px 0px 20px;
